@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"  xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2"    
+     xmlns:atom="http://www.w3.org/2005/Atom">
+    <Document>
+        <name>Converted from GPX file</name>
+        
+                                <atom:link href="http://www.garmin.com"/>
+            
+                            <TimeStamp>
+                <when>2010-01-16T03:10:42Z</when>
+            </TimeStamp> 
+            
+                
+        <description><![CDATA[<br/><p> </p><p><br/>Converted using <b><a href='http://gpx2kml.com' title='Go to gpx2kml.com'>gpx2kml.com</a></b></p><br/>]]></description>
+        <visibility>1</visibility>
+        <open>1</open>
+        
+                <Style id="red">
+            <LineStyle>
+            <color>C81400FF</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_red">
+            <LineStyle>
+            <color>961400FF</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="green">
+            <LineStyle>
+            <color>C878FF00</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_green">
+            <LineStyle>
+            <color>9678FF00</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="blue">
+            <LineStyle>
+            <color>C8FF7800</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_blue">
+            <LineStyle>
+            <color>96FF7800</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="cyan">
+            <LineStyle>
+            <color>C8F0FF14</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_cyan">
+            <LineStyle>
+            <color>96F0FF14</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="orange">
+            <LineStyle>
+            <color>C81478FF</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_orange">
+            <LineStyle>
+            <color>961478FF</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="dark_green">
+            <LineStyle>
+            <color>C8008C14</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_dark_green">
+            <LineStyle>
+            <color>96008C14</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="purple">
+            <LineStyle>
+            <color>C8FF7878</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_purple">
+            <LineStyle>
+            <color>96FF7878</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="pink">
+            <LineStyle>
+            <color>C8A078F0</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_pink">
+            <LineStyle>
+            <color>96A078F0</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="brown">
+            <LineStyle>
+            <color>C8143C96</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_brown">
+            <LineStyle>
+            <color>96143C96</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+                <Style id="dark_blue">
+            <LineStyle>
+            <color>C8F01414</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="route_dark_blue">
+            <LineStyle>
+            <color>96F01414</color>
+            <width>4</width>
+            </LineStyle>
+        </Style>
+        
+                
+                
+        <Folder>
+            <name>Tracks</name>
+            <description>A list of tracks</description>
+            <visibility>1</visibility>            
+            <open>0</open>
+                                                            
+                <Placemark>
+                    <visibility>0</visibility>            
+                    <open>0</open> 
+                    <styleUrl>#red</styleUrl>
+                    <name>Route2</name>
+                    <description>Track no. 1</description>
+                    <LineString>
+                        <extrude>true</extrude>
+                        <tessellate>true</tessellate>
+                        <altitudeMode>clampToGround</altitudeMode> 
+                        <coordinates>
+                            -106.401265,31.706043,1117.189453 -106.401265,31.706043,1116.228027 -106.401268,31.706052,1112.863281 -106.401269,31.706053,1116.228027 -106.401271,31.706058,1120.553955 -106.401271,31.706058,1117.189453 -106.401271,31.706058,1117.189453 -106.401267,31.706058,1117.669922 -106.401204,31.706207,1118.631348 -106.401315,31.706258,1118.150635 -106.401587,31.706405,1118.150635 -106.401584,31.706534,1119.112061 -106.401559,31.706684,1118.631348 -106.401166,31.707520,1118.631348 -106.400740,31.708366,1118.150635 -106.400660,31.708476,1118.150635 -106.400614,31.708568,1118.631348 -106.400600,31.708619,1118.150635 -106.400435,31.709030,1118.631348 -106.399987,31.709963,1117.669922 -106.399682,31.710565,1120.553955 -106.399232,31.711467,1118.631348 -106.398102,31.713739,1118.150635 -106.397060,31.715843,1119.112061 -106.396405,31.717244,1118.150635 -106.395623,31.718819,1119.592773 -106.394920,31.720161,1119.592773 -106.393945,31.722123,1119.112061 -106.393879,31.722255,1124.399170 -106.393814,31.722387,1121.034668 -106.393694,31.722647,1120.073242 -106.393402,31.724230,1118.631348 -106.393330,31.724671,1118.150635 -106.393322,31.724748,1118.150635 -106.393336,31.724768,1118.631348 -106.393298,31.725164,1120.073242 -106.393184,31.726021,1120.553955 -106.393052,31.727297,1120.073242 -106.392736,31.728940,1118.631348 -106.392699,31.729154,1119.112061 -106.392703,31.729155,1118.631348 -106.392691,31.729244,1119.592773 -106.392592,31.729710,1120.073242 -106.392558,31.729807,1119.592773 -106.391956,31.730752,1120.553955 -106.390922,31.732222,1120.553955 -106.389648,31.734000,1119.112061 -106.389098,31.734766,1118.631348 -106.389012,31.734887,1118.631348 -106.388935,31.735056,1118.150635 -106.389131,31.735308,1118.631348 -106.389977,31.735766,1119.592773 -106.391345,31.736498,1120.073242 -106.393394,31.737583,1121.995850 -106.396272,31.739151,1121.034668 -106.399316,31.740772,1122.476563 -106.402232,31.742361,1122.957275 -106.405167,31.743953,1123.437988 -106.408470,31.745749,1123.918457 -106.412014,31.747682,1122.957275 -106.414572,31.749059,1124.399170 -106.416909,31.750189,1123.437988 -106.419456,31.751134,1125.360352 -106.422106,31.751807,1124.879883 -106.424628,31.752192,1124.879883 -106.427597,31.752555,1124.879883 -106.428736,31.752945,1124.399170 -106.429967,31.753211,1124.879883 -106.431943,31.753471,1125.360352 -106.434178,31.754048,1124.879883 -106.436453,31.754917,1125.360352 -106.437331,31.755327,1125.841064 -106.438107,31.755514,1124.879883 -106.438871,31.755928,1125.841064 -106.439932,31.756745,1126.321777 -106.441096,31.757589,1126.802490 -106.442721,31.758646,1126.321777 -106.444452,31.759723,1126.321777 -106.445891,31.760613,1125.841064 -106.446133,31.760757,1125.841064                             
+                        </coordinates>
+                    </LineString>
+                </Placemark>
+                                        
+        </Folder>
+                
+        <LookAt>
+            <longitude>-106.417534</longitude>            
+            <latitude>31.7334</latitude>             
+            <altitude>0</altitude>               
+            <heading>0</heading>               
+            <tilt>45</tilt>
+            <range>3777</range>                    
+            <altitudeMode>clampToGround</altitudeMode> 
+        </LookAt>
+    </Document>
+</kml>

@@ -1,0 +1,79 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Cargo Simulator Manual and Documentation</h1>
+        <hr></hr>
+        <h2>About the Cargo Simulator</h2>
+        <p>
+         The cargo trip simulator is an event driven simulation that
+         simulates cargo trips sent from different departure points,
+         and arrive at different ports of entry. 
+        </p>
+        <p>
+        In our specific implementation we used maquiladoras (part assembly factories)
+        in Cd. Juarez, Mexico as departure points, or warehouses to these maquiladoras in some cases.
+        </p>
+        <p>
+            We used the 4 international bridges between Cd. Juarez and El Paso, TX.
+            Although we used these POEs (Points of Entry) and departure points,
+            the application can be easily used for any kind of port of entry and
+            any kind of departure point. That said, you would have to adapt the code
+            for custom databases.
+        </p>
+        <h3>Quick Overview</h3>
+        <p>
+            The cargo trip simulator takes as input an event scenario created in the
+            Event Manager application. It then fetches all the necessary data as dictated
+            by the Event Simulator from the Cargo Database, then updates the appropriate
+            entries in the cargo database to reflect the state of the simulation and in
+            the case of the webapp front end sends all the pertinent data to the cargo portal
+            to be displayed. The Simulator may also take input from the webapp front end.
+            In the case of the command line version of the Cargo Simulator the input and output
+            are routed through the command line interface.
+        </p>
+        <h2>How is this documentation going to work?</h2>
+        <p>
+            This manual is inbedded in the code. This means that it is supposed to be located inside the
+            actual eclipse project_folder/doc folder. The documentation consists of three
+            main components:
+            <ul>
+                <li>The typed manual (The part you are actually reading right now), which goes over
+                the simulator explaining the high level features and interactions between packages and classes.
+                <li>The auto-generated Javadoc documentation, which is generated from the javadoc comments all thorough
+                the code. This Html based documentation is automatically generated using the Ant build.xml file.
+                This is covered here: <a href="manual/ant-build.html">Ant Build File</a> and only builds Javadoc html for the
+                sim package, not the ui or the tds packages.
+                <li>The class diagram for the system. Parts of the class diagrams will be inserted in the manual in a on-need basis.
+                Further description of the class diagram can be found here: <a href="manual/diagram.html">Class Diagram Overview</a>. The diagram
+                itself can be found in the root root folder for the documentation dhs_version/doc. The diagram was created using Dia,
+                a free diagram created application, but a .jpg version of the diagram should be next to the .dia version if you wish
+                to avoid downloading dia
+            </ul>
+        </p>
+        <p>
+            The three components of the documentation are used to create this manual and will be referenced whenever needed
+        </p>
+        <h2>Manual Index</h2>
+        <p>
+            <ul>
+                <li><a href="manual/setup.html">Setting up the Cargo Trust Simulator</a>
+                <li><a href="manual/running.html">Running the Cargo Simulator</a>
+                <li><a href="manual/sim-overview.html">Overview of the Simulator</a>
+                <li><a href="overview-summary.html">Javadoc Overview</a>
+                <li><a href="manual/diagram.html">Class Diagram</a>
+            </ul>
+        </p>
+        <h2>Local Data for this project</h2>
+        <p>
+            In order for this project to run the data from the GIS servers had to be imported locally. This information is located in the JSP folder. This data includes the kml files for the routes as well as the scenario file that the simulator reads.
+            <ul>
+                <li><a href="manual/scenario.html">Creating and understanding Scenarios</a>
+                    <li><a href="manual/tripPool.html">The current Trip pool</a>
+            </ul>
+        </p>
+    <hr>
+        <p><i>Manual, documentation and most code by Jorge Alexis Hernandez</i></p>
+        <p><i>Trust Laboratory, University of Texas at El Paso</i></p>
+    </body>
+</html>

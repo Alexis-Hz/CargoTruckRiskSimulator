@@ -1,0 +1,80 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1> Setting up the Cargo Simulator</h1>
+        <hr></hr>
+        <h2>Requirements</h2>
+        <p>
+            The cargo trip simulator has to run on a server, we developed using
+            an Apache Tomcat 6.0 server, but the simulator should work on any
+            later version as well. 
+        </p>
+        <p>
+            The Tomcat server requires a couple of things for the simulator to compile,
+            it must have Java installed, we used Java 1.6 for the development, so any
+            later version should be fine, and might work with earlier versions of java
+            with minor adjustments.
+        </p>
+        <p>
+            We included a build ant file to compile all the code, in order to compile
+            this way, which is amply recommended you must have Jakarta Ant installed
+            in the Tomcat server as well; compiling will be further discussed in
+            the setup part
+        </p>
+        <h2>Compiling and setting up</h2>
+        <p>
+            Depending on what kind of installation you are going there are some different
+            things you will need to do. They all involve running ant scripts,
+            just depending on the installation different ant targets should be ran.
+        </p>
+        <h3>Setting up a Terminal Cargo Simulator</h3>
+        <p>
+            In order to setup a terminal Cargo Simulator you need to install on a server that has access to the Cargo Database and GIS services.
+            The servers we use are on the University of Texas at El Paso network, you should install on a machine connected to
+            this network and interface with it via secure shell.
+        </p>
+        <p>
+            <i>
+                For the purpose of this project a subset of the data used in the original project is hosted locally. This will allow to run the application without requiring any of the GIS Services
+            </i>
+        </p>
+        <p>
+            The machine you are going to be using should have both java and jakarta and both installed and in the classpaths.
+        </p>
+        <p>
+            Steps for installation:
+            <ul>
+                <li>Copy the project folder into a folder that you own and have executing and writing rights to
+                <li>Run the "runt" target from the ant build.xml file, this will compile and clean the source code if needed, and run the
+                terminal application, for further information about the build.xml and file look here: <a href="ant-build.html">Ant Build File Overview</a>
+                <li>You should see the command line input menu, it will show available commands with descriptions.
+                For further information about the Terminal application see the javadoc here: <a href="../ui/SimControlTerminal.html"> SimControlTerminal</a>
+            </ul>
+            <img src="terminalScreen.jpg" alt="some_text">
+        </p>
+        <h3>Setting up a WebApp Cargo Simulator</h3>
+        <p>
+            In order to setup the webapp version of the cargo simulator you will require a tomcat server with jsp, java and preferably java installed.
+            This server should be in the University of Texas at El Paso network, or in a machine that has access to both the Cargo Database Service and the GIS service
+        </p>
+        <p>
+            You must run the "warit" target from the build.xml ant script. You may do this from any computer that has jakarta ant and the source code or
+            from the same location where the Terminal versoin is installed. Or even from Eclipse provided you are running a version with the ant plugin setup
+        </p>
+        <p>
+            <ul>
+                <li>Run the "warit" in any way you find the easier, we advise strongly towards the Eclipse way, since it gives you more flexibility.
+                <li>The ant script will, compile if needed, and then create a war file on the root directory of your project, for further information
+                about the build.xml and file look here: <a href="ant-build.html">Ant Build File Overview</a>
+                <li>Copy the war file to the webapp folder in your Apache Tomcat installation, you may do this from ftp or in any way you see fit
+                <li>You may need to restart your Tomcat server, depending on the settings of your installation
+                <li>After the restart there should be a new folder called cargo in the webapps folder, this is the cargo webapp
+                <li>The index.jsp file should be accesible thorough generally the port 8080 or according to the settings in your Tomcat instalation
+                <li>You may now run the simulator from the jsp portal, for further information about the jsp portal you may refer to the java doc here:
+                <a href="../ui/ZenTerminal.html"> ZenTerminal</a>
+            </ul>
+        </p>
+        <img src="portalScreen.jpg" alt="some_text">
+    </body>
+</html>

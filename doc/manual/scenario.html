@@ -1,0 +1,95 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Creating and understanding Scenarios</h1>
+        <hr></hr>
+         <h1>Introduction</h1>
+        <p>
+            Now that you have the Cargo Simulator installed as explained in
+            <a href="setup.html">Setting up the Cargo Trust Simulator</a>
+            as well as having ran it a couple of times we will go into creating local scenarios as well as running them.        
+        </p>
+        <h1>Scenario Location</h1>
+        <p>
+            The simulator is supposed to read scenarios from a scenario database, since this database and it's services are no longer accessible I have created local scenarios and changed the code in the simulator to read from this local scenario. 
+        </p>
+        <p>
+            The scenario is located in the JSP file and is named <i>scenarioa.txt</i> this file is the only scenario file that the simulator reads. you may modify it, but it is advised that you do not delete it. just make a backup or something.
+        </p>
+        <h1>Scenario A</h1>
+        <p>
+            <i>
+            1 1 1337 370370.5334,3497869.6521 6 1 ST-DEPLOY yes mock1 1<br>
+            2 2 1337 370370.5334,3497869.6521 3 1 ST-DEPLOY yes mock2 1<br>
+            3 3 1337 370370.5334,3497869.6521 9 1 ST-DEPLOY yes mock1 1<br>
+            4 4 1337 370370.5334,3497869.6521 12 1 ST-DEPLOY yes mock2 1<br>
+            5 5 1337 370370.5334,3497869.6521 15 1 ST-DEPLOY yes mock1 1<br>
+            6 6 1337 370370.5334,3497869.6521 18 1 ST-DEPLOY yes mock2 1<br>
+            7 7 1337 370370.5334,3497869.6521 21 1 ST-DEPLOY yes mock1 1<br>
+            8 8 1337 370370.5334,3497869.6521 24 1 ST-DEPLOY yes mock2 1<br>
+            9 9 1337 0,0 30 10 SG-STOP yes mock2 1<br>
+            11 11 1337 0,0 50 10 SG-SLOW yes mock2 1<br>
+            10 10 1337 0,0 300 5 SG-DEPLOY yes mock2 1<br>
+            12 8 1337 0,0 90 10 ST-STOP yes mock2 1<br>
+            13 8 1337 0,0 105 10 ST-SLOW yes mock2 1<br>
+            14 14 1337 370370.5334,3497869.6521 80 1 ST-DEPLOY yes mock2 1<br>
+            15 15 1337 370370.5334,3497869.6521 85 1 ST-DEPLOY yes mock2 1<br>
+            16 14 1337 0,0 88 10 ST-BLOCK yes mock2 1<br>
+            17 17 1337 370370.5334,3497869.6521 110 5 SG-DEPLOY yes mock2 1<br>
+            18 18 1337 370370.5334,3497869.6521 170 1 ST-DEPLOY yes mock1 1<br>
+            19 19 1337 370370.5334,3497869.6521 173 1 ST-DEPLOY yes mock2 1<br>
+            20 20 1337 370370.5334,3497869.6521 176 1 ST-DEPLOY yes mock1 1<br>
+            21 21 1337 370370.5334,3497869.6521 179 1 ST-DEPLOY yes mock2 1<br>
+            22 22 1337 -106.424409,31.71248 170 30 SG-BLOCK yes mock2 1<br>
+            </i>
+        </p>
+        <p>
+            All values are necessary, let's take the first one as an example<br>
+            <i>
+            1 1 1337 370370.5334,3497869.6521 6 1 ST-DEPLOY yes mock1 1<br>
+            </i>
+            <ul>
+                <li><b>1: </b>This is the event id, it just identifies events. Don't create multiple events with the same ID, for ST-Deploy this value is the number of route/trip that will be deployed</li>
+                <li><b>1: </b>This is the trip id, it really only applies to trip specific events, or the ones starting with either ST or AT(we do not support the latter, asynchronous events), it will usually be the same as the event id, at the exceptin of trip specific events</li>
+                <li><b>1337: </b>This is the session ID, this value is not relevant for local scenarios since the session id is irrelevant for that kind of instance, there is only one session at a time </li>
+                <li><b>370370.5334,3497869.6521: </b> This is the coordinate for the event, this value is only important for a couple of events, namely the SG-Block as it will be the location where the Global block will be created </li>
+                <li><b>6: </b> This is the startintg time for the event, or the miute at which the event will be triggered</li>
+                <li><b>1: </b> This is the duration of the event, at the end of the duration the event will be killed </li>
+                <li><b>ST-DEPLOY: </b> This is the code for the event, see the code description below</li>
+                <li><b>yes: </b> This is the reported yes/no value, this is not relevant for the local version since there is no thread detection service</li>
+                <li><b>mock1: </b> This is the reason or description for the event, this is not really relevant without the thread detection</li>
+                <li><b>1: </b>This is the interval for the event, this is the interval at which the vent repeats itself, I did not mess with this on the local version so it's untested</li>
+            </ul>
+        </p>
+        <h1>Types of Events</h1>
+        <p>
+            The key for events is:
+            <ul>
+                <li>'S' stands for synchronous or time based, these events will happen </li>
+                <li>'A' stands for asynchronous or non-time based, these events will happen based on other events, these are not supported</li>
+                <li>'T' stands for trip based events, these events are linked to a particular trip, and will affect only that trip directly </li>
+                <li>'G' stands for global, these events will affect all running trips</li>
+            </ul>
+            The value after the '-' is the type of the event<br>
+            These are the supported events
+            <ul>
+                <li><b>ST-DEPLOY: </b>This event sends one trip corresponding to the trip ID position in the trip pool, this event should only last 1 minute, and should not repeat, limit is 40 or you start sending trips assigned to the global deploy</li>
+                <li><b>SG-DEPLOY: </b>This event sends 1 trip per minute until it is killed, this will send trips starting from the 40th position in the trip pool, this limits the ammount of other trips to be sent to 40. There is 121 trips total so keep that in mind</li>
+                <li><b>ST-STOP: </b>This event stops the trip associated with the event id for it's duration, for example 1 1 deploy will be stopped by 2 1 stop </li>
+                <li><b>SG-STOP: </b>This event stops all the running trips for the duration of the event</li>
+                <li><b>ST-SLOW: </b> This event will slow the trip associated with the trip id in the event for the duration of the event, see ST-STOP. A slowed trip will take 2 minuted to move 1 position, or from one segment to another</li>
+                <li><b>SG-SLOW: </b>This event slows all running trips for the duration of the event</li>
+                <li><b>ST-BLOCK: </b>This event creates a block right at the position of the associated trip id. this block will be global and will block other trips that are going to pass over it for the duration of the event, the blocks and position must match exactly</li>
+                <li><b>SG-BLOCK: </b>This will create a global block at the specified coordinate. All trips will be stopped if they have to pass through that spot for the duration of the event</li>
+            </ul>
+        </p>
+        <h1>Modifying the local event</h1>
+        <p>
+            Modifying the local scenario assumes that the user is familiar with the way the simulator works, an incorrect event might have adverse effects on the scenario. Unfortunately there is not much error handling in this feature, since this feature should be replaced by the services creating appropiate events.<br><br>
+            A lot of the events will only be relevant if there are trips running before it or going through a certain position so be wary of this, the sample scenario features all supporting events in a way that makes sense and exposes their individual functionality.<br><br>
+            Some finer points of creating events might be missed in this manual so please take a look at the sample scenario for reference.<br><br>
+            The trip pool is fixed, please see that section for guidance
+        </p>
+    </body>
+</html>

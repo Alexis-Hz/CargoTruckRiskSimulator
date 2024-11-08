@@ -1,11 +1,20 @@
 # Compiled class file
 *.class
+.bin/
+cargo.war
 
 # Log file
 *.log
 
 # BlueJ files
 *.ctxt
+
+# Storage Files
+.DS_Store
+Thumbs.db
+
+# Settings
+.settings/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

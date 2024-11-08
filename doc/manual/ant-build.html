@@ -1,0 +1,48 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Ant Build File Overview</h1>
+        <hr></hr>
+        <p>
+            The ant build xml file has a set of targets to simplify
+            the compiling, management and deployment of the Cargo
+            Simulator. We will briefly explain the use of each target here.
+        </p>
+        <h2>build</h2>
+        <p>
+        Depends on compile, simply calls compile. If there is need to add extra code and compile it,
+        add the compile target for the extra code here
+        </p>
+        <h2>clean</h2>
+        <p>
+        Deletes the build directory containing the binaries
+        </p>
+        <h2>compile</h2>
+        <p>
+        Depends on clean, compiles all the source code
+        </p>
+        <h2>javadoc</h2>
+        <p>
+        Creates all the Javadoc Html from the jadoc comments in the code and stores it in the doc folder
+        </p>
+        <h2>runj</h2>
+        <p>
+        Depends on compile, Runs the ZenTerminal, this target is for the use of the jsp front end, use runt instead when wanting
+        to run the Cargo Simulator
+        </p>
+        <h2>runt</h2>
+        <p>
+        Depends on compile, Runds the SimControlTerminal, call this target when wanting to run the application from secure shell or
+        the terminal
+        </p>
+        <h2>runu</h2>
+        <p>
+        Not Used, runs SimControlView
+        </p>
+        <h2>warit</h2>
+        <p>
+        Depends on build, creates the war for the Cargo Simulator file and saves it in the root folder of the project.
+        </p>
+    </body>
+</html>

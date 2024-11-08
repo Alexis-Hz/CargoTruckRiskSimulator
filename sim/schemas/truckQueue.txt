@@ -1,0 +1,36 @@
+CREATE TABLE POE
+(
+    POEID INT NOT NULL,
+    numLanes INT NOT NULL,
+    currAvail INT NOT NULL,
+    PRIMARY KEY(POEID)
+);
+
+CREATE TABLE session
+(
+    sessionID INT NOT NULL AUTO_INCREMENT,
+    timestamp INT NOT NULL,
+    PRIMARY KEY(sessionID, timestamp)
+);
+
+CREATE TABLE lane
+(
+    POEID INT NOT NULL,
+    laneID INT NOT NULL,
+    status VARCHAR(50),
+    sessionID INT NOT NULL,
+    FOREIGN KEY(sessionID) REFERENCES session(sessionID),
+    PRIMARY KEY(POEID,laneID)
+);
+
+CREATE TABLE trip
+(
+    sessionID INT NOT NULL,
+    POE INT NOT NULL,
+    laneID INT,
+    recomendation VARCHAR(50),
+    PMLREF VARCHAR(100),
+    truckInfo VARCHAR(500),
+    status VARCHAR(50),
+    FOREIGN KEY(sessionID) REFERENCES POE(POEID)
+);    

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="dhs" default="compile" basedir=".">
+	<property name="src" value="${basedir}/sim/src"/>
+	<property name="controlSrc" value="${basedir}/sim/src/control"/>
+	<property name="modelSrc" value="${basedir}/sim/src/model"/>
+	<property name="uiSrc" value="${basedir}/sim/src/ui"/>
+	<property name="cargoSrc" value="${basedir}/sim/src/model/cargo"/>
+	<property name="poemSrc" value="${basedir}/sim/src/model/poem"/>
+	<property name="trafficSrc" value="${basedir}/sim/src/model/traffic"/>
+	<property name="tdsSrc" value="${basedir}/sim/src/model/tds"/>
+	<property name="build" value="${basedir}/build"/>
+	<property name="lib" value="${basedir}/lib"/>
+	<property name="nlib" value="${build}/lib"/>
+	<property name="classes" value="${build}/classes"/>
+	<property name="jsp" value="${basedir}/jsp"/>
+	<property name="servlethome" value="/usr/local/tomcat/tomcat5.0.28/webapps/cargotrust"/>
+	
+	<target name="warit" depends="build">
+		<war destfile="cargo.war" update="true" webxml="${basedir}/web.xml">
+			<lib dir="${nlib}"/>
+			<classes dir="${classes}"/>
+			<fileset dir="${jsp}"/>
+		</war>
+	</target>
+	<target name="build" depends="compile">
+	</target>
+	
+	<!--The class path is here -->
+	<path id="thepath">
+		<pathelement location="${basedir}/build/classes"/>
+		<pathelement path="${java.class.path}"/>
+		<fileset dir="${nlib}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${classes}">
+			<include name="**/*.class"/>
+		</fileset>
+	</path>
+	<!--The class path is here -->
+	
+	
+	<target name="runj" depends="compile">
+			<java classname="ui.ZenTerminal" failonerror="true" append="true">
+				<classpath refid="thepath"/>
+			</java>		
+		</target>
+	<!--The juice is here -->
+	<target name="runt" depends="compile">
+		<java classname="ui.SimControlTerminal" failonerror="true" append="true" error="dummyErrorFile">
+			<classpath refid="thepath"/>
+		</java>		
+	</target>
+	
+	<target name="runu" depends="compile">
+			<echo>@Run</echo>
+			<java classname="ui.SimControlView" failonerror="true" fork="true">
+				<classpath refid="thepath"/>
+			</java>
+		</target>
+	<!--The juice is here -->
+	
+	<target name="compile" depends="clean" description="Compile and store all the java files output in the directory build">		
+		<echo>@Creating Folders</echo>	
+		<mkdir dir="${build}"/>
+			<mkdir dir="${classes}"/>
+			<mkdir dir="${nlib}"/>
+		<echo>@Copying libraries</echo>
+			<copydir dest="${nlib}" src="${lib}">
+				<include name="**/*.*"/>
+			</copydir>
+		<echo>@Compiling Everything</echo>
+			<javac fork="true" destdir="${classes}" srcdir="${src}" target="1.8"> 
+		    	<include name="**/*.java"/>
+				<classpath>
+					<fileset dir="${nlib}">
+						<include name="**/*.*"/>
+					</fileset>
+						
+				</classpath>			
+			</javac> 
+		</target>
+	
+	<target name="clean" description="Delete the build directory">
+			<delete dir ="${build}" />
+			<delete file="${basedir}/dhs.war" />
+		</target>
+    <target name="javadoc">
+        <javadoc access="protected" author="true" classpath="lib/mail.jar;lib/mysql-connector-java-5.0.8-bin.jar;lib/probeit/axis4/wsdl4j-1.5.1.jar;lib/probeit/axis4/activation.jar;lib/probeit/viewers/parvis.jar;lib/jaxrpc.jar;lib/probeit/diva/acme.jar;lib/mrj.jar;lib/probeit/probeit.jar;lib/commons-logging.jar;lib/org.apache.commons.logging_1.0.4.v20080605-1930.jar;lib/wb/servlet-api.jar;lib/probeit/axis4/mail.jar;lib/probeit/diva/diva.jar;lib/tds.jar;lib/probeit/axis4/mrj.jar;lib/axis.jar;lib/probeit/axis4/axis.jar;lib/probeit/axis4/axis-ant.jar;lib/activation.jar;lib/javax.wsdl_1.4.0.v200806030407.jar;lib/jpl/tds.jar;lib/probeit/axis4/saaj.jar;lib/log4j-1.2.8.jar;lib/commons-discovery-0.2.jar;lib/axis-ant.jar;lib/wb/mysql-connector-java-5.0.8-bin.jar;lib/javax.xml_1.3.4.v200806030440.jar;lib/probeit/axis4/commons-logging.jar;lib/mysql-connector-java-3.1.14-bin.jar;lib/probeit/axis4/commons-discovery-0.2.jar;lib/probeit/viewers/acrobat.jar;lib/wsdl4j-1.5.1.jar;lib/probeit/axis4/log4j-1.2.8.jar;lib/servlet-api.jar;lib/jpl/jpl.jar;lib/probeit/util/dataset.jar;lib/probeit/util/soap.jar;lib/probeit/viewers/ij.jar;lib/saaj.jar;lib/jpl.jar;lib/probeit/axis4/jaxrpc.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="org.tempuri,model.traffic,model.tds.threatDetectionService,ui,control,model.poem,model.cargo,edu.university.cs.iw.axis.CDBService5_jws,model.tds" source="1.6" sourcepath="tds/src;sim/src;ui/src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>
